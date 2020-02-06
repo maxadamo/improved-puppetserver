@@ -36,7 +36,7 @@ and you'll get something like this script
 
 ### you need a puppet check (triggered by Consul)
 
-You need a basic shell script that will lower and raise the weight based on CPU usage
+You need a basic shell script (`/usr/local/bin/puppet-check.sh`) that will tell consul to lower/raise the weight based on CPU usage, or remore the node when it's unhealthy.
 
 ### temporarily recover from PuppetDB failure (is this part still needed?)
 
