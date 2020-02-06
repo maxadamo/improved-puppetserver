@@ -1,0 +1,24 @@
+{
+  "service": {
+    "checks": [
+      {
+        "args": [
+          "/usr/local/bin/puppet-check.sh"
+        ],
+        "interval": "10s"
+      }
+    ],
+    "enable_tag_override": false,
+    "id": "puppet",
+    "name": "puppet",
+    "port": 8140,
+    "tags": [
+      "_x-puppet._tcp",
+      "_x-puppet-fileserver._tcp"
+    ],
+    "weights": {
+      "passing": 10,
+      "warning": 1
+    }
+  }
+}
