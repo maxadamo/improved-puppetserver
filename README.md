@@ -4,15 +4,15 @@
 
 ### Preamble
 
-we have 2 puppet servers:
+1. we have 2 puppet servers:
 
-the 1st server is: `puppet01.domain.org`
+    - 1st server: `puppet01.domain.org`
 
-the 2nd server is: `puppet02.domain.org`
+    - 2nd server: `puppet02.domain.org`
 
-we have Consul
+1. we have Consul
 
-we have two NFS VMs (yes, if we have HA puppet, we deserve a HA NFS appliance)
+1. we have two NFS VMs (if we have puppet multi-master, we deserve NFS multi-master)
 
 ### sharing the certificates
 
