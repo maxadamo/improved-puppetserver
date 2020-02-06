@@ -11,7 +11,7 @@
 1. [Consul configuration](#consul-configuration)
     * [consul config in details](#consul-config-in-details)
 1. [puppet.conf - agent](#puppet.conf---agent)
-1. [puppet.conf - agent](#puppet.conf---server)
+1. [puppet.conf - server](#puppet.conf---server)
 1. [temporarily recover from PuppetDB failure - maybe obsolete](#temporarily-recover-from-puppetdb-failure---maybe-obsolete)
 
 
