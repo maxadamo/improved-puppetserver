@@ -49,7 +49,7 @@ You need a basic shell script (`/usr/local/bin/puppet-check.sh`) that will tell 
 #### Consul configuration
 
 You may want to use the Puppet module for [Consul](https://forge.puppet.com/KyleAnderson/consul) made by Solarkennedy. 
-You'll get a consul configuration like this this file: [puppet_service.json](https://github.com/maxadamo/improved-puppetserver/blob/master/scripts/service_puppet.json)
+You'll get a consul configuration file like this this one: [puppet_service.json](https://github.com/maxadamo/improved-puppetserver/blob/master/scripts/service_puppet.json)
 
 ##### consul config in details
 
@@ -66,7 +66,7 @@ which means:
 
 - if the puppet check succeeds (`passing`) the weight of the SRV record will be 10
 - it the puppet check finds that your CPU is higher than 90%, the weight is lowered to 1
-- if the check fails, you puppet is broked and consul will delete its record
+- if the check fails, your puppet is borked and consul will delete its record
 
 #### puppet.conf - agent
 
@@ -74,7 +74,7 @@ on your agents you'll have this [puppet.conf](https://github.com/maxadamo/improv
 
 #### puppet.conf - server
 
-on your agents you'll have this [puppet.conf](https://github.com/maxadamo/improved-puppetserver/blob/master/scripts/puppet_server.conf)
+on your server you'll have this [puppet.conf](https://github.com/maxadamo/improved-puppetserver/blob/master/scripts/puppet_server.conf)
 
 ### temporarily recover from PuppetDB failure - maybe obsolete
 
