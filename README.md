@@ -32,11 +32,11 @@ psst: this command is obsolete and it's not gonna work. You need to replace it w
 #### Consul configuration
 
 You may want to use Puppet module for [Consul](https://forge.puppet.com/KyleAnderson/consul) from Solarkennedy
-and you'll get something like this script
+and you'll get something like [this script](https://github.com/maxadamo/improved-puppetserver/blob/master/scripts/service_puppet.json)
 
 ### you need a puppet check (triggered by Consul)
 
-You need a basic shell script (`/usr/local/bin/puppet-check.sh`) that will tell consul to lower/raise the weight based on CPU usage, or remore the node when it's unhealthy.
+You need a basic shell script (`/usr/local/bin/puppet-check.sh`) that will tell consul to lower/raise the weight based on CPU usage, or remore the node when it's unhealthy: [puppet-check.sh](https://github.com/maxadamo/improved-puppetserver/blob/master/scripts/puppet-check.sh)
 
 ### temporarily recover from PuppetDB failure (is this part still needed?)
 
