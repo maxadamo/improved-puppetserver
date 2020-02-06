@@ -2,6 +2,19 @@
 
 ## Steps to create the Puppet HA
 
+#### Table of Contents
+
+1. [Preamble](#preamble)
+1. [Sharing the certificates](#sharing-the-certificates)
+1. [on puppet01 and puppet02](#on-puppet01-and-puppet02)
+1. [Puppet check](#puppet-check)
+1. [Consul configuration](#consul-configuration)
+    * [consul config in details](#consul-config-in-details)
+1. [puppet.conf - agent](#puppet.conf---agent)
+1. [puppet.conf - agent](#puppet.conf---server)
+1. [temporarily recover from PuppetDB failure - maybe obsolete](#temporarily-recover-from-puppetdb-failure---maybe-obsolete)
+
+
 ### Preamble
 
 1. we have 2 puppet servers:
@@ -14,7 +27,7 @@
 
 1. we have two NFS VMs (if we have puppet multi-master, we deserve NFS multi-master)
 
-### sharing the certificates
+### Sharing the certificates
 
 `/etc/puppetlabs/puppet/ssl` is shared with NFS
 
@@ -29,16 +42,41 @@ puppet cert --generate $(hostname -f) --dns_alt_names=$(hostname -s).your.consul
 
 psst: this command is obsolete and it's not gonna work. You need to replace it with `puppetserver ....` correspondant command
 
-#### Consul configuration
-
-You may want to use Puppet module for [Consul](https://forge.puppet.com/KyleAnderson/consul) from Solarkennedy
-and you'll get something like [this script](https://github.com/maxadamo/improved-puppetserver/blob/master/scripts/service_puppet.json)
-
-### you need a puppet check (triggered by Consul)
+### Puppet check (triggered by Consul)
 
 You need a basic shell script (`/usr/local/bin/puppet-check.sh`) that will tell consul to lower/raise the weight based on CPU usage, or remore the node when it's unhealthy: [puppet-check.sh](https://github.com/maxadamo/improved-puppetserver/blob/master/scripts/puppet-check.sh)
 
-### temporarily recover from PuppetDB failure (is this part still needed?)
+#### Consul configuration
+
+You may want to use the Puppet module for [Consul](https://forge.puppet.com/KyleAnderson/consul) made by Solarkennedy. 
+You'll get a consul configuration like this this file: [puppet_service.json](https://github.com/maxadamo/improved-puppetserver/blob/master/scripts/service_puppet.json)
+
+##### consul config in details
+
+the bottom part of the json contains the following statements:
+
+```json
+    "weights": {
+      "passing": 10,
+      "warning": 1
+    }
+```
+
+which means:
+
+- if the puppet check succeeds (`passing`) the weight of the SRV record will be 10
+- it the puppet check finds that your CPU is higher than 90%, the weight is lowered to 1
+- if the check fails, you puppet is broked and consul will delete its record
+
+#### puppet.conf - agent
+
+on your agents you'll have this puppet.conf
+
+#### puppet.conf - server
+
+on your agents you'll have this puppet.conf
+
+### temporarily recover from PuppetDB failure - maybe obsolete
 
 - fail one server:
 
