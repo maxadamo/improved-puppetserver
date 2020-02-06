@@ -70,11 +70,11 @@ which means:
 
 #### puppet.conf - agent
 
-on your agents you'll have this puppet.conf
+on your agents you'll have this [puppet.conf](https://github.com/maxadamo/improved-puppetserver/blob/master/scripts/puppet_agent.conf)
 
 #### puppet.conf - server
 
-on your agents you'll have this puppet.conf
+on your agents you'll have this [puppet.conf](https://github.com/maxadamo/improved-puppetserver/blob/master/scripts/puppet_server.conf)
 
 ### temporarily recover from PuppetDB failure - maybe obsolete
 
